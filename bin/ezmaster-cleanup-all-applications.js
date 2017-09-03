@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var request = require('request');
 request.get('http://127.0.0.1:35267/-/v1/app', function (error, response, apps) {
   apps = JSON.parse(apps);

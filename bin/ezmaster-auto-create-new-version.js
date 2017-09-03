@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Script used to autonomate latest application creation 
 // from the latest dockerhub published tag.
 // And to automaticaly create a new instance from this app.
