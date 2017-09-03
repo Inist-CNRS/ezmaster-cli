@@ -1,0 +1,35 @@
+{
+  "name": "ezmaster",
+  "version": "1.0.0",
+  "description": "Node wrapper for ezMaster's HTTP API & usefull tools scripts using the API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ezmaster-auto-create-new-version": "bin/ezmaster-auto-create-new-version.js",
+    "ezmaster-cleanup-all-applications.js": "bin/ezmaster-cleanup-all-applications.js",
+    "ezmaster-cleanup-all-instances.js": "bin/ezmaster-cleanup-all-instances.js"
+  },
+  "engines": {
+    "node": ">= 8.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inist-CNRS/node-ezmaster.git"
+  },
+  "keywords": [
+    "ezmaster",
+    "tools",
+    "api"
+  ],
+  "author": "Stéphane Gully",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Inist-CNRS/node-ezmaster/issues"
+  },
+  "homepage": "https://github.com/Inist-CNRS/node-ezmaster#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
