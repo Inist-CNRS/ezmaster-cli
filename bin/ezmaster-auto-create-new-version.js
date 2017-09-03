@@ -17,6 +17,12 @@ ezmaster.downloadAndCreateLatestApplication(APPLICATION_BASENAME, function (err,
   if (!APPLICATION_NAME) return;
   ezmaster.getLatestInstanceVersion(INSTANCE_BASENAME, function (err, version) {
     ezmaster.getGithubTagComment(APPLICATION_BASENAME, APPLICATION_NAME.split(':')[1], function (err, versionComment) {
+      // check if this version should be skipped
+      if (versionComment.indexOf('#ezskip') !== -1) {
+        console.log('Skipping auto ezmaster instance creation: ' 
+          + APPLICATION_NAME + ' => ' + versionComment);
+        return;
+      }
       const NEW_INSTANCE = INSTANCE_BASENAME + '-' + (version+1);
       ezmaster.createNewInstance(
         versionComment ? versionComment : 'Version ' + APPLICATION_NAME,

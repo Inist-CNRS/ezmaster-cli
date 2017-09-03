@@ -34,6 +34,10 @@ ezmaster-auto-create-new-version
 - `CONFIG_FROM_INSTANCE`: if you want the new instance to have a none blank configuration, you can use this variable to ask the script to copy it from another ezmaster instance (this instance should exists)
 - `EZMASTER_BASEURL`: if you want to interact with another ezmaster, by default it's `http://127.0.0.1:35267`
 
+> Tip: if you do not want a new version of your app to be automaticaly deployed on ezmaster, you just have to put this keyword in your github commit comment tag: `#ezskip`
+>
+> Example: ``npm version patch -m "Quick fix i do not want to be deployed #ezskip"``
+
 ### ezmaster-cleanup scripts
 
 Script used to cleanup all existing ezmaster instances.
