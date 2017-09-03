@@ -15,7 +15,7 @@ And can be used as a command line:
 npm install -g ezmaster-cli
 ```
 
-##Command line usage 
+## Command line usage
 
 ### ezmaster-auto-create-new-version
 
