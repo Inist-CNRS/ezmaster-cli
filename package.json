@@ -9,8 +9,8 @@
   },
   "bin": {
     "ezmaster-auto-upgrade-application": "bin/ezmaster-auto-upgrade-application.js",
-    "ezmaster-cleanup-all-applications.js": "bin/ezmaster-cleanup-all-applications.js",
-    "ezmaster-cleanup-all-instances.js": "bin/ezmaster-cleanup-all-instances.js"
+    "ezmaster-cleanup-all-applications": "bin/ezmaster-cleanup-all-applications.js",
+    "ezmaster-cleanup-all-instances": "bin/ezmaster-cleanup-all-instances.js"
   },
   "engines": {
     "node": ">= 8.4.0"
