@@ -1,4 +1,4 @@
-# node-ezmaster
+# ezmaster-cli
 Node wrapper for ezMaster's HTTP API & usefull tools scripts using the API
 
 ## Installation
@@ -6,13 +6,13 @@ Node wrapper for ezMaster's HTTP API & usefull tools scripts using the API
 This package can be used as a library:
 
 ```shell
-npm install --save ezmaster
+npm install --save ezmaster-cli
 ```
 
 And can be used as a command line:
 
 ```shell
-npm install -g ezmaster
+npm install -g ezmaster-cli
 ```
 
 ##Command line usage 
