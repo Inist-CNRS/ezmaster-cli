@@ -1,5 +1,5 @@
 {
-  "name": "ezmaster",
+  "name": "ezmaster-cli",
   "version": "1.0.2",
   "description": "Node wrapper for ezMaster's HTTP API & usefull tools scripts using the API",
   "main": "index.js",
