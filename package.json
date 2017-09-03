@@ -8,9 +8,9 @@
     "postversion": "git push && git push --tags"
   },
   "bin": {
-    "ezmaster-auto-create-new-version": "bin/ezmaster-auto-create-new-version.js",
-    "ezmaster-cleanup-all-applications.js": "bin/ezmaster-cleanup-all-applications.js",
-    "ezmaster-cleanup-all-instances.js": "bin/ezmaster-cleanup-all-instances.js"
+    "ezmaster-auto-create-new-version": "node bin/ezmaster-auto-create-new-version.js",
+    "ezmaster-cleanup-all-applications.js": "node bin/ezmaster-cleanup-all-applications.js",
+    "ezmaster-cleanup-all-instances.js": "node bin/ezmaster-cleanup-all-instances.js"
   },
   "engines": {
     "node": ">= 8.4.0"
