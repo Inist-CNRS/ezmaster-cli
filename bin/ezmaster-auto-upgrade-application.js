@@ -8,6 +8,7 @@
 // APPLICATION_BASENAME="istex/istex-dl" INSTANCE_BASENAME="istex-dl" CONFIG_FROM_INSTANCE="istex-dl-2" node auto-create-new-version.js
 
 var ezmaster = require('../index.js');
+ezmaster.setupNoProxyStuff();
 
 const APPLICATION_BASENAME = process.env.APPLICATION_BASENAME ? process.env.APPLICATION_BASENAME : "istex/istex-dl";
 const INSTANCE_BASENAME    = process.env.INSTANCE_BASENAME ? process.env.INSTANCE_BASENAME : "istex-dl";

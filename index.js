@@ -5,6 +5,16 @@ const EZMASTER_BASEURL = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BAS
 
 var request = require('request');
 
+module.exports.setupNoProxyStuff = function () {
+    // exclude ezmaster from proxified hostnames
+    // (npm request package takes into account this env var)
+    let no_proxy = process.env.no_proxy ? process.env.no_proxy.split(',') : [ '' ];
+    no_proxy.push('ezmaster');
+    no_proxy.push('127.0.0.1');
+    no_proxy.filter(e => e.trim() !== '');
+    process.env.no_proxy = no_proxy.join(',');
+}
+
 module.exports.createEzmasterApp = function(APPLICATION_BASENAME, APPLICATION_TAG, cb) {
     console.log('ezmaster app creating => ', APPLICATION_BASENAME + ':' + APPLICATION_TAG);
     request.post(EZMASTER_BASEURL + '/-/v1/app', {

@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+var ezmaster = require('../index.js');
+ezmaster.setupNoProxyStuff();
+
 const EZMASTER_BASEURL = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BASEURL : "http://127.0.0.1:35267";
 
 var request = require('request');
