@@ -17,7 +17,7 @@ npm install -g ezmaster-cli
 
 ## Command line usage
 
-### ezmaster-auto-upgrade-application
+### ezmaster-auto-upgrade-instance
 
 Script used to autonomate latest application upgrade from the latest dockerhub published tag and to automaticaly create a new instance from this upgraded app. Run example:
 
@@ -26,7 +26,7 @@ APPLICATION_BASENAME="istex/istex-dl" \
 INSTANCE_BASENAME="istex-dl" \
 CONFIG_FROM_INSTANCE="istex-dl-2" \
 EZMASTER_BASEURL="http://127.0.0.1:35267" \
-ezmaster-auto-upgrade-application
+ezmaster-auto-upgrade-instance
 ```
 
 - `APPLICATION_BASENAME`: this is the docker image basename (without the tag), that will be checked on the dockerhub to get the latest published tag

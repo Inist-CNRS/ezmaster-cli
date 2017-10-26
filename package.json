@@ -8,7 +8,7 @@
     "postversion": "git push && git push --tags"
   },
   "bin": {
-    "ezmaster-auto-upgrade-application": "bin/ezmaster-auto-upgrade-application.js",
+    "ezmaster-auto-upgrade-instance": "bin/ezmaster-auto-upgrade-instance.js",
     "ezmaster-cleanup-all-applications": "bin/ezmaster-cleanup-all-applications.js",
     "ezmaster-cleanup-all-instances": "bin/ezmaster-cleanup-all-instances.js"
   },
