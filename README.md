@@ -38,6 +38,15 @@ ezmaster-auto-upgrade-instance
 >
 > Example: ``npm version patch -m "Quick fix i do not want to be deployed #ezskip"``
 
+### ezmaster-auto-upgrade-applications
+
+Script used to autonomate latest application upgrade from the latest dockerhub published tag. Run example:
+
+```bash
+ezmaster-auto-upgrade-applications
+```
+
+
 ### ezmaster-cleanup scripts
 
 Script used to cleanup all existing ezmaster instances.
