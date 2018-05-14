@@ -10,9 +10,9 @@
 var ezmaster = require('../index.js');
 ezmaster.setupNoProxyStuff();
 
-const APPLICATION_BASENAME = process.env.APPLICATION_BASENAME ? process.env.APPLICATION_BASENAME : "istex/istex-dl";
-const INSTANCE_BASENAME    = process.env.INSTANCE_BASENAME ? process.env.INSTANCE_BASENAME : "istex-dl";
-const CONFIG_FROM_INSTANCE = process.env.CONFIG_FROM_INSTANCE ? process.env.CONFIG_FROM_INSTANCE    : "";
+const APPLICATION_BASENAME = ezmaster.APPLICATION_BASENAME;
+const INSTANCE_BASENAME    = ezmaster.INSTANCE_BASENAME;
+const CONFIG_FROM_INSTANCE = ezmaster.CONFIG_FROM_INSTANCE;
 
 ezmaster.downloadAndCreateLatestApplication(APPLICATION_BASENAME, function (err, APPLICATION_NAME) {
   if (!APPLICATION_NAME) return;

@@ -1,7 +1,14 @@
 // IMAGE_BASENAME="library/nginx" node scripts/create-application.js
 
 
-const EZMASTER_BASEURL = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BASEURL : "http://127.0.0.1:35269";
+module.exports.EZMASTER_BASEURL     = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BASEURL : "http://127.0.0.1:35269";
+module.exports.EZMASTER_USER        = process.env.EZMASTER_USER ? process.env.EZMASTER_USER : "";
+module.exports.EZMASTER_PASSWORD    = process.env.EZMASTER_PASSWORD ? process.env.EZMASTER_PASSWORD : "";
+
+module.exports.APPLICATION_BASENAME = process.env.APPLICATION_BASENAME ? process.env.APPLICATION_BASENAME : "istex/istex-dl";
+module.exports.INSTANCE_BASENAME    = process.env.INSTANCE_BASENAME ? process.env.INSTANCE_BASENAME : "istex-dl";
+module.exports.CONFIG_FROM_INSTANCE = process.env.CONFIG_FROM_INSTANCE ? process.env.CONFIG_FROM_INSTANCE    : "";
+
 
 var request = require('request');
 
@@ -19,7 +26,7 @@ module.exports.setupNoProxyStuff = function () {
 
 module.exports.createEzmasterApp = function(APPLICATION_BASENAME, APPLICATION_TAG, cb) {
     console.log('ezmaster app creating => ', APPLICATION_BASENAME + ':' + APPLICATION_TAG);
-    request.post(EZMASTER_BASEURL + '/-/v1/app', {
+    request.post(module.exports.EZMASTER_BASEURL + '/-/v1/app', {
         timeout: 120 * 1000, // 2 minutes
         form: {
             imageName: APPLICATION_BASENAME,
@@ -42,7 +49,7 @@ module.exports.createEzmasterApp = function(APPLICATION_BASENAME, APPLICATION_TA
 
 module.exports.getLatestInstanceVersion = function(INSTANCE_BASENAME, cb) {
     INSTANCE_BASENAME = INSTANCE_BASENAME.split('-');
-    request.get(EZMASTER_BASEURL + '/-/v1/instances',
+    request.get(module.exports.EZMASTER_BASEURL + '/-/v1/instances',
         function(err, response, instances) {
             err && console.error(err);
             instances = JSON.parse(instances);
@@ -65,7 +72,7 @@ module.exports.getLatestInstanceVersion = function(INSTANCE_BASENAME, cb) {
 module.exports.createNewInstance = function(longName, technicalName, applicationName, cb) {
     // {"longName":"aaa","project":"istex","version":"2","study":"istexdl","technicalName":"istex-istexdl-2","app":"istex/istex-dl:4.4.0"}
     console.log('ezmaster instance creating => ', technicalName);
-    request.post(EZMASTER_BASEURL + '/-/v1/instances', {
+    request.post(module.exports.EZMASTER_BASEURL + '/-/v1/instances', {
         timeout: 120 * 1000, // 2 minutes
         form: {
             app: applicationName,
@@ -96,7 +103,7 @@ module.exports.downloadAndCreateLatestApplication = function(APPLICATION_BASENAM
             const APPLICATION_NAME = APPLICATION_BASENAME + ':' + APPLICATION_LATEST_TAG;
 
             request.get(
-                EZMASTER_BASEURL + '/-/v1/app',
+                module.exports.EZMASTER_BASEURL + '/-/v1/app',
                 function(err, response, apps) {
                     err && console.error(err);
                     apps = JSON.parse(apps);
@@ -156,7 +163,7 @@ module.exports.getGithubTagComment = function(APPLICATION_BASENAME, TAG, cb) {
 }
 
 module.exports.getInstanceFromName = function(INSTANCE_NAME, cb) {
-    request.get(EZMASTER_BASEURL + '/-/v1/instances',
+    request.get(module.exports.EZMASTER_BASEURL + '/-/v1/instances',
         function(err, response, instances) {
             if (err) return console.error(err) && cb(err);
             instances = JSON.parse(instances);
@@ -172,7 +179,7 @@ module.exports.getInstanceFromName = function(INSTANCE_NAME, cb) {
 module.exports.updateInstanceConfig = function(INSTANCE_NAME, config, cb) {
     console.log('ezmaster updating instance config => ', INSTANCE_NAME);
     module.exports.getInstanceFromName(INSTANCE_NAME, function(err, instance) {
-        request.put(EZMASTER_BASEURL + '/-/v1/instances/config/' + instance.containerId, {
+        request.put(module.exports.EZMASTER_BASEURL + '/-/v1/instances/config/' + instance.containerId, {
             timeout: 120 * 1000, // 2 minutes
             json: { newConfig: config }
         }).on('end', function() {
@@ -187,7 +194,7 @@ module.exports.updateInstanceConfig = function(INSTANCE_NAME, config, cb) {
 
 module.exports.getInstanceDetailsFromName = function(INSTANCE_NAME, cb) {
     module.exports.getInstanceFromName(INSTANCE_NAME, function(err, instance) {
-        request.get(EZMASTER_BASEURL + '/-/v1/instances/' + instance.containerId, function(err, response, details) {
+        request.get(module.exports.EZMASTER_BASEURL + '/-/v1/instances/' + instance.containerId, function(err, response, details) {
             details = JSON.parse(details);
             return cb && cb(err, details);
         });
