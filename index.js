@@ -1,7 +1,7 @@
 // IMAGE_BASENAME="library/nginx" node scripts/create-application.js
 
 
-const EZMASTER_BASEURL = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BASEURL : "http://127.0.0.1:35267";
+const EZMASTER_BASEURL = process.env.EZMASTER_BASEURL ? process.env.EZMASTER_BASEURL : "http://127.0.0.1:35269";
 
 var request = require('request');
 
