@@ -10,9 +10,11 @@ module.exports.setupNoProxyStuff = function () {
     // (npm request package takes into account this env var)
     let no_proxy = process.env.no_proxy ? process.env.no_proxy.split(',') : [ '' ];
     no_proxy.push('ezmaster');
+    no_proxy.push('ezmaster-api');
     no_proxy.push('127.0.0.1');
     no_proxy.filter(e => e.trim() !== '');
     process.env.no_proxy = no_proxy.join(',');
+    process.env.NO_PROXY = no_proxy.join(',');
 }
 
 module.exports.createEzmasterApp = function(APPLICATION_BASENAME, APPLICATION_TAG, cb) {
@@ -84,8 +86,9 @@ module.exports.createNewInstance = function(longName, technicalName, application
 
 module.exports.downloadAndCreateLatestApplication = function(APPLICATION_BASENAME, cb) {
     // latest image tag
-    request.get(
-        'https://hub.docker.com/v2/repositories/' + APPLICATION_BASENAME + '/tags/?page_size=1',
+    var url = 'https://hub.docker.com/v2/repositories/' + APPLICATION_BASENAME + '/tags/?page_size=1';
+    console.log('Searching latest app from:', url);
+    request.get(url,
         function(err, response, APPLICATION_LATEST_TAG) {
             err && console.error(err);
             APPLICATION_LATEST_TAG = JSON.parse(APPLICATION_LATEST_TAG);
