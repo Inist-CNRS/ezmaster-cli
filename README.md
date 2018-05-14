@@ -26,6 +26,8 @@ APPLICATION_BASENAME="istex/istex-dl" \
 INSTANCE_BASENAME="istex-dl" \
 CONFIG_FROM_INSTANCE="istex-dl-2" \
 EZMASTER_BASEURL="http://127.0.0.1:35267" \
+EZMASTER_USER="ezuser" \
+EZMASTER_PASSWORD="ezpassword" \
 ezmaster-auto-upgrade-instance
 ```
 
@@ -33,6 +35,8 @@ ezmaster-auto-upgrade-instance
 - `INSTANCE_BASENAME`: this is the ezmaster instance basename (without the version), that will be used to create the next instance using an incremented version number
 - `CONFIG_FROM_INSTANCE`: if you want the new instance to have a none blank configuration, you can use this variable to ask the script to copy it from another ezmaster instance (this instance should exists)
 - `EZMASTER_BASEURL`: if you want to interact with another ezmaster, by default it's `http://127.0.0.1:35267`
+- `EZMASTER_USER`: needed if your ezmaster backoffice is securized by a user/password
+- `EZMASTER_PASSWORD`: needed if your ezmaster backoffice is securized by a user/password
 
 > Tip: if you do not want a new version of your app to be automaticaly deployed on ezmaster, you just have to put this keyword in your github commit comment tag: `#ezskip`
 >

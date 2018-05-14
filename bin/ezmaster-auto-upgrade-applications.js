@@ -8,7 +8,7 @@ const EZMASTER_BASEURL = ezmaster.EZMASTER_BASEURL;
 var request = require('request');
 var url = EZMASTER_BASEURL + '/-/v1/app';
 console.log('Getting app list from ezmaster-api:', url);
-request.get(url, function (error, response, apps) {
+request.get(url, ezmaster.request_option, function (error, response, apps) {
   if (error) return console.error(error);
   apps = JSON.parse(apps);
   apps.forEach(function (app) {
